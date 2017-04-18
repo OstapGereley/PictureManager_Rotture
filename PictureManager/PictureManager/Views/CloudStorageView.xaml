@@ -1,0 +1,244 @@
+﻿<controls:MetroWindow x:Class="PictureManager.Views.CloudStorageView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:converters="clr-namespace:PictureManager.Converters"
+                      Title="Dropbox" Height="500" Width="600"
+                      ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
+                      Icon="../logo_icon_256.ico"
+                      ShowIconOnTitleBar="False"
+                      EnableDWMDropShadow="True">
+
+    <controls:MetroWindow.Resources>
+        <!--Converters-->
+        <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <!--Brushes-->
+        <SolidColorBrush x:Key="TransperentBlack" Color="Black" Opacity="0.6" />
+
+    </controls:MetroWindow.Resources>
+
+
+    <!--Window commands-->
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+
+            <Button Command="{Binding Path=OpenHomePageCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                               Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_social_dropbox}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock VerticalAlignment="Center" Margin="4,0,0,0" Text="Home Page" />
+                </StackPanel>
+            </Button>
+
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
+    <Grid Margin="5">
+
+        <Grid Visibility="{Binding Path=IsConnected, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+            <StackPanel VerticalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                            Visibility="{Binding Path=TimeoutAlertVisibility}">
+                    <Rectangle Width="45.9922" Height="40.6089"
+                               Fill="White">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_timer_alert}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+
+                    <TextBlock FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0">Your session has timed out. Try again.</TextBlock>
+                </StackPanel>
+
+
+                <Button Width="200" Height="50"
+                        Content="Login"
+                        FontSize="25"
+                        Margin="0,25,0,25"
+                        Command="{Binding Path=LoginCommand}" />
+
+                <controls:ProgressRing Width="100" Height="100" IsActive="{Binding Path=IsAuthorizationUrlOpen}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Visibility="{Binding Path=IsConnected, Converter={StaticResource BoolToVisibilityConverter}}">
+            <TabControl>
+                <TabItem Header="Download">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <ListBox ItemsSource="{Binding Path=DownloadablePictures}" Grid.Row="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <CheckBox Focusable="False"
+                                                  Grid.Column="0"
+                                                  IsChecked="{Binding Path=ReadyForDownload}" />
+
+
+                                        <Border Grid.Column="1" Width="35" Height="35" Margin="0,0,10,0"
+                                                Visibility="{Binding Path=IsDownloaded, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            <Rectangle Width="12.682" Height="20"
+                                                       Fill="White">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Visual="{StaticResource appbar_download}"
+                                                                 Stretch="Fill" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </Border>
+
+                                        <TextBlock Grid.Column="2" FontSize="13" VerticalAlignment="Center"
+                                                   Text="{Binding Path=PictureName}" />
+
+                                        <ProgressBar Grid.Column="3" Width="100"
+                                                     Value="{Binding Path=DownloadProgress}"
+                                                     Margin="0,0,10,0"
+                                                     Visibility="{Binding Path=ReadyForDownload, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
+                            <Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    Command="{Binding Path=DownloadCommand}">
+                                <Rectangle Width="22.55" Height="20"
+                                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Visual="{StaticResource appbar_social_dropbox_download}"
+                                                     Stretch="Fill" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Button>
+
+                            <Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    Command="{Binding Path=CancelDownloadCommand}">
+                                <Rectangle Width="20" Height="20"
+                                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Visual="{StaticResource appbar_cancel}"
+                                                     Stretch="Fill" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Button>
+
+                            <Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    Command="{Binding Path=RefreshDownloadInfoCommand}">
+                                <Rectangle Width="16.923" Height="20"
+                                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Visual="{StaticResource appbar_refresh}"
+                                                     Stretch="Fill" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Upload">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <ListBox ItemsSource="{Binding Path=UploadablePictures}" Grid.Row="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <CheckBox Focusable="False"
+                                                  Grid.Column="0"
+                                                  IsChecked="{Binding Path=ReadyForUpload}" />
+
+
+                                        <Border Grid.Column="1" Width="35" Height="35" Margin="0,0,10,0"
+                                                Visibility="{Binding Path=IsUploaded, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            <Rectangle Width="12.307" Height="20"
+                                                       Fill="White">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Visual="{StaticResource appbar_upload}"
+                                                                 Stretch="Fill" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </Border>
+
+                                        <TextBlock Grid.Column="2" FontSize="13" VerticalAlignment="Center"
+                                                   Text="{Binding Path=PicturePath}" />
+
+                                        <ProgressBar Grid.Column="3" Width="100"
+                                                     Value="{Binding Path=UploadProgress}"
+                                                     Margin="0,0,10,0"
+                                                     Visibility="{Binding Path=ReadyForUpload, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
+                            <Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    Command="{Binding Path=UploadCommand}">
+                                <Rectangle Width="22.55" Height="20"
+                                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Visual="{StaticResource appbar_social_dropbox_upload}"
+                                                     Stretch="Fill" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Button>
+
+                            <Button Width="50" Height="50" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    Command="{Binding Path=CancelUploadCommand}">
+                                <Rectangle Width="20" Height="20"
+                                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Visual="{StaticResource appbar_cancel}"
+                                                     Stretch="Fill" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <Grid Background="{StaticResource TransperentBlack}"
+                  Visibility="{Binding Path=IsRefreshing, Converter={StaticResource BoolToVisibilityConverter}}">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <controls:ProgressRing IsActive="True" Width="100" Height="100" />
+
+                    <TextBlock Text="Please wait..." FontSize="25" Margin="0,25,0,0" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</controls:MetroWindow>

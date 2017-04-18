@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureManager", "PictureManager\PictureManager.csproj", "{06F2616E-A889-42B4-82FC-CFFD479A19BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemManager", "FileSystemManager\FileSystemManager.csproj", "{080B5347-5176-4A7A-8570-8867EBC0BE50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudStorageManager", "CloudStorageManager\CloudStorageManager.csproj", "{998CD27D-1FD3-4F7E-B1B4-B5EC511F5FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudStorageManagerTests", "CloudStorageManagerTests\CloudStorageManagerTests.csproj", "{D8AF897F-7D13-48EF-BD9E-C4167D93DC46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKPostTests", "PictureManagerTests1\VKPostTests.csproj", "{D56F4F9C-B310-411C-83A8-9AE7F4988133}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{259C426B-AB4E-4C90-87F6-07B3EA2C044C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://3-2015-group4.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PictureManager\\PictureManager.csproj
+		SccProjectName1 = PictureManager
+		SccLocalPath1 = PictureManager
+		SccProjectUniqueName2 = FileSystemManager\\FileSystemManager.csproj
+		SccProjectName2 = FileSystemManager
+		SccLocalPath2 = FileSystemManager
+		SccProjectUniqueName3 = CloudStorageManager\\CloudStorageManager.csproj
+		SccProjectName3 = CloudStorageManager
+		SccLocalPath3 = CloudStorageManager
+		SccProjectUniqueName4 = CloudStorageManagerTests\\CloudStorageManagerTests.csproj
+		SccProjectName4 = CloudStorageManagerTests
+		SccLocalPath4 = CloudStorageManagerTests
+		SccProjectUniqueName5 = PictureManagerTests1\\VKPostTests.csproj
+		SccProjectName5 = PictureManagerTests1
+		SccLocalPath5 = PictureManagerTests1
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06F2616E-A889-42B4-82FC-CFFD479A19BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F2616E-A889-42B4-82FC-CFFD479A19BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F2616E-A889-42B4-82FC-CFFD479A19BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F2616E-A889-42B4-82FC-CFFD479A19BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080B5347-5176-4A7A-8570-8867EBC0BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080B5347-5176-4A7A-8570-8867EBC0BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080B5347-5176-4A7A-8570-8867EBC0BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080B5347-5176-4A7A-8570-8867EBC0BE50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{998CD27D-1FD3-4F7E-B1B4-B5EC511F5FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{998CD27D-1FD3-4F7E-B1B4-B5EC511F5FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{998CD27D-1FD3-4F7E-B1B4-B5EC511F5FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{998CD27D-1FD3-4F7E-B1B4-B5EC511F5FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8AF897F-7D13-48EF-BD9E-C4167D93DC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8AF897F-7D13-48EF-BD9E-C4167D93DC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8AF897F-7D13-48EF-BD9E-C4167D93DC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8AF897F-7D13-48EF-BD9E-C4167D93DC46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56F4F9C-B310-411C-83A8-9AE7F4988133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56F4F9C-B310-411C-83A8-9AE7F4988133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56F4F9C-B310-411C-83A8-9AE7F4988133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56F4F9C-B310-411C-83A8-9AE7F4988133}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
