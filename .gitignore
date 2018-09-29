@@ -45,3 +45,21 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/.vs
+/PictureManager/.vs/PictureManager/v15
+/PictureManager/CloudStorageManager/obj
+/PictureManager/CloudStorageManager/bin/Debug
+/PictureManager/CloudStorageManagerTests/bin/Debug
+/PictureManager/CloudStorageManagerTests/obj
+/PictureManager/FileSystemManager/bin/Debug
+/PictureManager/FileSystemManager/obj/Debug
+/PictureManager/FileSystemManager/obj/Release
+/PictureManager/packages/NUnit.3.10.1
+/PictureManager/PictureManager/bin/Debug
+/PictureManager/PictureManager/obj/Debug
+/PictureManager/PictureManager/obj/Release
+/PictureManager/PictureManagerTests/obj
+/PictureManager/PictureManagerTests1/bin/Debug
+/PictureManager/PictureManagerTests1/obj
+/PictureManager/VKPostTest/obj
+/PictureManager/VKWallPostTests/obj

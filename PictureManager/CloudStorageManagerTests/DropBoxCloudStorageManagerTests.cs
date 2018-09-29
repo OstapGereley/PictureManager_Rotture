@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System.Linq;
 
 namespace CloudStorageManager.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class DropBoxCloudStorageManagerTests
     {
-        [TestMethod()]
+        [Test]
         public void DropBoxCloudStorageManagerUploadTest()
         {
             var paths = Enumerable.Repeat<string>(@"D:\server\photo\UAAestExp\edit\IMG_0230.jpg",1);
@@ -23,7 +23,7 @@ namespace CloudStorageManager.Tests
             }
         }
 
-        [TestMethod()]
+        [Test]
         public void DropBoxCloudStorageManagerDownloadTest()
         {
             var paths = Enumerable.Repeat<string>(@"/Rotture/logo_icon_64.png", 1);

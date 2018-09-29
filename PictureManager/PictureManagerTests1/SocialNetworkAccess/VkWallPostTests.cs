@@ -1,16 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace PictureManager.SocialNetworkAccess.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class VkWallPostTests
     {
-        [TestMethod()]
+        [Test]
         public void AddWallPostTest()
         {
-            VkWallPost.GetCode();
-            VkWallPost.GetToken("https://oauth.vk.com/blank.html#code=90362ffacbdab58a0f");
-            VkWallPost.AddWallPost("TEST", @"D:\server\photo\UAAestExp\edit\IMG_0230.jpg");
+			var a = new VkWallPost();
+            a.GetCode();
+            a.GetToken("https://oauth.vk.com/blank.html#code=90362ffacbdab58a0f");
+            a.AddWallPost("TEST", @"D:\server\photo\UAAestExp\edit\IMG_0230.jpg");
         }
     }
 }
